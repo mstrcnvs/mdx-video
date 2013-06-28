@@ -1,6 +1,7 @@
 dist
 build
 output
+venv
 MANIFEST
 .idea
 *.sublime-*
