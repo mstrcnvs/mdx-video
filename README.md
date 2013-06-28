@@ -24,6 +24,7 @@ The following video providers are supported:
  - Dailymotion
  - Metacafe
  - Veoh
+ - Facebook
 
 Contribute
 ----------
