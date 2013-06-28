@@ -19,6 +19,8 @@ class VideoExtension(markdown.Extension):
             'yahoo_height': ['351', 'Height for Yahoo! videos'],
             'youtube_width': ['560', 'Width for Youtube videos'],
             'youtube_height': ['315', 'Height for Youtube videos'],
+            'facebook_width': ['560', 'Width for Facebook videos'],
+            'facebook_height': ['315', 'Height for Facebook videos']
         }
 
         # Override defaults with user settings
@@ -46,6 +48,8 @@ class VideoExtension(markdown.Extension):
             r'([^(]|^)https?://www\.youtube\.com/watch\?\S*v=(?P<youtubeid>\S[^&/]+)')
         self.add_inline(md, 'youtube_short', Youtube,
             r'([^(]|^)https?://youtu\.be/(?P<youtubeid>\S[^?&/]+)?')
+        self.add_inline(md, 'facebook', Facebook,
+            r'([^(]|^)https?://www\.facebook\.com/photo\.php\?\S*v=(?P<vid>\S[^?&/]+)\S*')
 
 
 class Dailymotion(markdown.inlinepatterns.Pattern):
@@ -93,6 +97,14 @@ class Youtube(markdown.inlinepatterns.Pattern):
         url = 'http://www.youtube.com/embed/%s' % m.group('youtubeid')
         width = self.ext.config['youtube_width'][0]
         height = self.ext.config['youtube_height'][0]
+        return render_iframe(url, width, height)
+
+
+class Facebook(markdown.inlinepatterns.Pattern):
+    def handleMatch(self, m):
+        url = 'https://www.facebook.com/video/embed?video_id=%s' % m.group('vid')
+        width = self.ext.config['facebook_width'][0]
+        height = self.ext.config['facebook_height'][0]
         return render_iframe(url, width, height)
 
 

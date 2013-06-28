@@ -16,6 +16,7 @@ PROVIDERS = {
     "yahoo": "http://screen.yahoo.com/mansome-169-ultimate-dj-party-040000302.html",
     "youtube": "https://www.youtube.com/watch?feature=player_embedded&v=9UwOrl036_A",
     "youtube_short": "http://youtu.be/QH2-TGUlwu4",
+    "facebook": "https://www.facebook.com/photo.php?v=10100952187141246"
 }
 
 if not os.path.exists(TESTS_DIR):
